@@ -13,15 +13,70 @@ function show(text) {
 show("Warm-up page is working");
 
 // Task 1: Variables
+const name = "Sarah Al-Maliki";
+const city = "NYC";
+let visits = 0;
+visits = visits + 1;
 
+show(
+  `My name is ${name} and I live in ${city}. I have visited this page ${visits} times.`,
+);
 
 // Task 2: Function and if (ticketLabel)
 
+function ticketLabel(age) {
+  if (age < 12) {
+    return "Child";
+  } else if (age < 65) {
+    return "Adult";
+  } else {
+    return "Senior";
+  }
+}
+
+show(ticketLabel(6));
+show(ticketLabel(27));
+show(ticketLabel(69));
 
 // Task 3: Array of places
+const places = [
+  "Toronto",
+  "New Jersey",
+  "Maryland",
+  "Montreal",
+  "New York City",
+];
 
+show(places.length);
+show(places[places.length - 1]);
+
+for (const place of places) {
+  show(place);
+}
 
 // Task 4: Array of objects
 
+const items = [
+  { title: "Tea", category: "Beverages", price: 2.5 },
+  { title: "scone", category: "Bakery", price: 6.5 },
+  { title: "French Fries", category: "Main course", price: 12.0 },
+  { title: "Coffee", category: "Beverages", price: 4.5 },
+];
+
+for (const item of items) {
+  show(`${item.title}: $${item.price}`);
+}
 
 // Task 5: Function with a loop (totalPrice)
+
+function totalPrice(items) {
+  let total = 0;
+
+  for (const item of items) {
+    total = total + item.price;
+  }
+
+  return total;
+}
+
+show(totalPrice(items));
