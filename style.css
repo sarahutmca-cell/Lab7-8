@@ -1,0 +1,7 @@
+/* Provided. You may add to it. */
+.is-saved {
+  outline: 3px solid var(--bs-primary-border);
+}
+.filter-btn.is-active {
+  outline: 3px solid var(--bs-primary-border);
+}

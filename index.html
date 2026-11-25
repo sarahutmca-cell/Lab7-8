@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Campus Cafe Menu</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script type="module" src="js/bootstrap.bundle.min.js"></script>
+  <!-- defer runs your scripts after the page is ready. data.js must come before main.js -->
+  <script src="js/data.js" defer></script>
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+
+  <header class="container my-4 d-flex justify-content-between align-items-center">
+    <h1 id="pageTitle">Campus Cafe Menu</h1>
+    <div class="d-flex gap-2">
+      <a href="index.html" class="btn-subtle theme-secondary">Home</a>
+      <a href="contact.html" class="btn-subtle theme-secondary">Contact</a>
+      <button type="button" id="themeBtn" class="btn-subtle theme-secondary" aria-pressed="false">Dark mode</button>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <p id="note">Welcome to the Campus Cafe. Save your favourite items.</p>
+    <button type="button" id="noteBtn" class="btn-subtle theme-secondary" aria-controls="note" aria-expanded="true">Hide note</button>
+
+    <div class="my-4">
+      <label for="searchBox" class="form-label">Search</label>
+      <input type="search" id="searchBox" class="form-control" placeholder="Type to search">
+    </div>
+
+    <div class="d-flex gap-2 mb-3" id="filters">
+      <button type="button" class="btn-solid theme-primary filter-btn is-active" data-category="All" aria-pressed="true">All</button>
+      <button type="button" class="btn-solid theme-primary filter-btn" data-category="Drinks" aria-pressed="false">Drinks</button>
+      <button type="button" class="btn-solid theme-primary filter-btn" data-category="Snacks" aria-pressed="false">Snacks</button>
+      <button type="button" class="btn-solid theme-primary filter-btn" data-category="Meals" aria-pressed="false">Meals</button>
+    </div>
+
+    <p id="count" role="status" aria-live="polite"></p>
+    <p>Saved: <span id="savedCount">0</span></p>
+
+    <!-- JavaScript draws the cards here. Leave this container empty. -->
+    <div class="row g-4" id="tourList"></div>
+
+  </main>
+
+  <footer class="container my-5">
+    <p>CCT360 Lab 7</p>
+  </footer>
+
+</body>
+</html>

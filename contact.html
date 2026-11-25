@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script type="module" src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/contact.js" defer></script>
+</head>
+<body>
+
+  <header class="container my-4 d-flex justify-content-between align-items-center">
+    <h1 id="pageTitle">Contact Us</h1>
+    <div class="d-flex gap-2">
+      <a href="index.html" class="btn-subtle theme-secondary">Home</a>
+      <a href="contact.html" class="btn-subtle theme-secondary">Contact</a>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <form id="contactForm" style="max-width: 700px" novalidate>
+        <div class="form-field mb-3">
+          <label for="firstName" class="form-label">First name</label>
+          <input type="text" class="form-control" id="firstName" required aria-describedby="firstNameFeedback">
+          <div id="firstNameFeedback" class="invalid-feedback"></div>
+        </div>
+        <div class="form-field mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" required aria-describedby="emailFeedback">
+          <div id="emailFeedback" class="invalid-feedback"></div>
+        </div>
+        <div class="form-field mb-3">
+          <label for="message" class="form-label">Message</label>
+          <textarea class="form-control" id="message" rows="4" required minlength="10" aria-describedby="messageFeedback"></textarea>
+          <div id="messageFeedback" class="invalid-feedback"></div>
+        </div>
+        <div class="form-field mb-3">
+          <input type="checkbox" id="consent" class="check" required aria-describedby="consentFeedback">
+          <label for="consent">I agree to be contacted</label>
+          <div id="consentFeedback" class="invalid-feedback"></div>
+        </div>
+      <button type="submit" class="btn-solid theme-primary">Send</button>
+    </form>
+
+    <!-- JavaScript shows the confirmation message here -->
+    <div id="confirmBox" class="d-none mt-4" role="status"></div>
+
+  </main>
+
+  <footer class="container my-5">
+    <p>CCT360 Lab 7</p>
+  </footer>
+
+</body>
+</html>
