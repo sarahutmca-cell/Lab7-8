@@ -86,8 +86,39 @@ tourList.addEventListener("click", (event) => {
 });
 
 // PART D: FILTER AND SEARCH
-// - Two state variables: activeCategory and query.
-// - One update() function: filter the items, draw them, update #count.
-// - Category buttons (.filter-btn) set activeCategory, move is-active and aria-pressed.
-// - #searchBox (input event) sets query. Ignore capital letters.
-// - #count shows "Showing 3 of 8 items". If nothing matches, show a message.
+let activeCategory = "All";
+let query = "";
+
+const count = document.querySelector("#count");
+function update() {
+  const shown = items.filter(
+    (item) =>
+      (activeCategory == "All" || item.category === activeCategory) &&
+      item.title.toLowerCase().includes(query),
+  );
+  document.querySelectorAll(".filter-btn").forEach(btn => { 
+btn.addEventListener("click", () => {
+  activeCategory=btn.dataset.category;
+  document.querySelectorAll(".filter")
+
+});
+});
+    
+  }
+  renderItems(shown);
+
+  function renderItems(list) {
+    tourList.innerHTML = list.map(cardHTML).join("");
+    count.textContent = `showing ${list.length} of ${items.length} items `;
+  }
+
+  function renderItems(list) {
+    if (list.length ===0){
+      tourList.innerHTML="<p>No items match your search.</p>"
+
+    } else {
+      tourList.innerHTML=list.map(cardHTML).join("");
+    }
+    count.textContent=`Showing ${list.length} of ${items.length} items`;
+   
+}
