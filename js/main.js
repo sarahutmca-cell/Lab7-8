@@ -67,7 +67,23 @@ const tourList = document.querySelector("#tourList");
 tourList.innerHTML = items.map(cardHTML).join("");
 
 const savedIds = [];
-const 
+const savedCount = document.querySelector("#savedCount");
+tourList.addEventListener("click", (event) => {
+  const btn = event.target.closest(".save-btn");
+
+  if (!btn) return;
+  const id = Number(btn.dataset.id);
+  const isSaved = btn.classList.toggle("is-saved");
+  btn.textContent = isSaved ? "Saved" : "Save";
+  btn.setAttribute("aria-pressed", isSaved);
+
+  if (isSaved) {
+    savedIds.push(id);
+  } else {
+    savedIds.splice(savedIds.indexOf(id), 1);
+  }
+  savedCount.textContent = savedIds.length;
+});
 
 // PART D: FILTER AND SEARCH
 // - Two state variables: activeCategory and query.
