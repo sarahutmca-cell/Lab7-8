@@ -45,11 +45,12 @@ function priceLabel(price) {
   return "$" + price;
 }
 // This creates the HTML for one item card.
+//The div classes dimensions has been copied from previous lab to ensure card dimensions are accurate
 function cardHTML(item) {
   const isSaved = savedIds.includes(item.id);
   return `
-  <div class="col-12 md:col-6 lg:col-4">
-  <div class="card h-100">
+  <div class="col-12 md:col-6 lg:col-4"> 
+  <div class="card h-100"> 
   <div class="card-body d-flex flex-column">
   <h3 class="card-title">${item.title}</h3>
   <p>${item.category}</p>
@@ -110,6 +111,7 @@ function update() {
 }
 
 document.querySelectorAll(".filter-btn").forEach((btn) => {
+  //Here I have used AI's chatGPT's help because i did not know how to make sure the filteration is working, so I have took some example, then implemented it
   btn.addEventListener("click", () => {
     activeCategory = btn.dataset.category;
     document.querySelectorAll(".filter-btn").forEach((filterBtn) => {
@@ -125,6 +127,7 @@ update();
 const searchBox = document.querySelector("#searchBox");
 
 searchBox.addEventListener("input", (event) => {
+  //here I have used Claude AI to add the value to lowercase to make sure search box filtering does not get impact results
   query = event.target.value.toLowerCase();
   update();
 });

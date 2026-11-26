@@ -23,7 +23,7 @@ show(
 );
 
 // Task 2: Function and if (ticketLabel)
-
+//Shows the ticket type depending on the age of coniditions
 function ticketLabel(age) {
   if (age < 12) {
     return "Child";
@@ -34,11 +34,13 @@ function ticketLabel(age) {
   }
 }
 
-show(ticketLabel(6));
-show(ticketLabel(27));
-show(ticketLabel(69));
+show(ticketLabel(8));
+show(ticketLabel(30));
+show(ticketLabel(70));
 
 // Task 3: Array of places
+
+// Adding different places with const conditions to display cities
 const places = [
   "Toronto",
   "New Jersey",
@@ -55,7 +57,7 @@ for (const place of places) {
 }
 
 // Task 4: Array of objects
-
+//these are just objects and their categories
 const items = [
   { title: "Tea", category: "Beverages", price: 2.5 },
   { title: "scone", category: "Bakery", price: 6.5 },
@@ -68,7 +70,7 @@ for (const item of items) {
 }
 
 // Task 5: Function with a loop (totalPrice)
-
+// here the function shows the addiition of all the prices I've put above
 function totalPrice(items) {
   let total = 0;
 
