@@ -1,7 +1,7 @@
 // Lab 7: Campus Cafe page (index.html). Test after each step.
 // If you use an AI tool, describe how you used it in a comment here.
 
-// Claude AI was used to help me understand why certain codes are used.
+// Claude AI was used to help me understand why certain codes are being used.
 
 // PART B: CHANGE THE PAGE
 // - Set the h1 (#pageTitle) text to a title of your choice.
@@ -30,35 +30,16 @@ themeBtn.addEventListener("click", () => {
   themeBtn.setAttribute("aria-pressed", goDark);
 });
 
-
 // PART C: CARDS FROM THE ARRAY
+function priceLabel(price) {
+  if (price === 0) {
+    return "Free";
+  } else if (price < 5) {
+    return "Under $5";
+  }
 
-const items= [
-    {id:1, title: "Tea", category:"Beverages", price: 1.50 }
-    {id:2, title: "Iced Vanilla Matacha", category:"Beverages", price: 3.50 }
-    {id:3, title: "Iced coffee", category:"Beverages", price: 2.50 }
-    {id:4, title: "Chocolate Lava Cake", category:"Pasteries", price: 5.00 }
-    {id:5, title: "Carrot & Pecan pound cake", category:"Pasteries", price: 7.50 }
-    {id:6, title: "Chicken ham and swiss cheese toast", category:"Main Meals", price: 12.50 }
-    {id:7, title: "Cheese and jam roll", category:"Pasteries", price: 4.50 }
-    {id:8, title: "American Cheese stuffed croissant", category:"Main Meals", price: 8.50 }
-];
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  return "$" + price;
+}
 // PART D: FILTER AND SEARCH
 // - Two state variables: activeCategory and query.
 // - One update() function: filter the items, draw them, update #count.
