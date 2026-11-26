@@ -40,6 +40,35 @@ function priceLabel(price) {
 
   return "$" + price;
 }
+
+function cardHTML(item) {
+  return `
+  <div class="col-12 md:col-6 lg:col-4">
+  <div class="card h-100">
+  <div class="card-body">
+  <h3 class="card-title">${item.title}</h3>
+  <p>${item.category}</p>
+  <p>${priceLabel(item.price)}</p>
+  <button 
+  type="button"
+  class="btn-solid theme-primary mt-auto save-btn"
+  data-id="${item.id}"
+  aria-pressed="false"
+  >
+  Save
+  </button>
+  </div>
+  </div>
+  </div>
+  `;
+}
+
+const tourList = document.querySelector("#tourList");
+tourList.innerHTML = items.map(cardHTML).join("");
+
+const savedIds = [];
+const 
+
 // PART D: FILTER AND SEARCH
 // - Two state variables: activeCategory and query.
 // - One update() function: filter the items, draw them, update #count.
