@@ -5,7 +5,7 @@
 // At least one item must have a price of 0.
 
 const items = [
-  { id: 1, title: "Tea", category: "Drinks", price: 1.5 },
+  { id: 1, title: "Water", category: "Drinks", price: 0 },
   { id: 2, title: "Iced Vanilla Matacha", category: "Drinks", price: 3.5 },
   { id: 3, title: "Iced coffee", category: "Drinks", price: 2.5 },
   { id: 4, title: "Chocolate Lava Cake", category: "Snacks", price: 5.0 },

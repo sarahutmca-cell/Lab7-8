@@ -16,7 +16,7 @@ const noteBtn = document.querySelector("#noteBtn");
 
 noteBtn.addEventListener("click", () => {
   const isHidden = note.classList.toggle("d-none");
-  noteBtn.textContent = isHidden ? "Show Note" : "Hide note";
+  noteBtn.textContent = isHidden ? "Show note" : "Hide note";
   noteBtn.setAttribute("aria-expanded", !isHidden);
 });
 
@@ -31,6 +31,10 @@ themeBtn.addEventListener("click", () => {
 });
 
 // PART C: CARDS FROM THE ARRAY
+const savedIds = [];
+const tourList = document.querySelector("#tourList");
+const savedCount = document.querySelector("#savedCount");
+// Returns a price label based on the item's price.
 function priceLabel(price) {
   if (price === 0) {
     return "Free";
@@ -40,22 +44,23 @@ function priceLabel(price) {
 
   return "$" + price;
 }
-
+// This creates the HTML for one item card.
 function cardHTML(item) {
+  const isSaved = savedIds.includes(item.id);
   return `
   <div class="col-12 md:col-6 lg:col-4">
   <div class="card h-100">
-  <div class="card-body">
+  <div class="card-body d-flex flex-column">
   <h3 class="card-title">${item.title}</h3>
   <p>${item.category}</p>
   <p>${priceLabel(item.price)}</p>
   <button 
   type="button"
-  class="btn-solid theme-primary mt-auto save-btn"
+  class="btn-solid theme-primary mt-auto save-btn${isSaved ? " is-saved" : ""}"
   data-id="${item.id}"
-  aria-pressed="false"
+  aria-pressed="${isSaved}"
   >
-  Save
+  ${isSaved ? "Saved" : "Save"}
   </button>
   </div>
   </div>
@@ -63,11 +68,6 @@ function cardHTML(item) {
   `;
 }
 
-const tourList = document.querySelector("#tourList");
-tourList.innerHTML = items.map(cardHTML).join("");
-
-const savedIds = [];
-const savedCount = document.querySelector("#savedCount");
 tourList.addEventListener("click", (event) => {
   const btn = event.target.closest(".save-btn");
 
@@ -90,35 +90,41 @@ let activeCategory = "All";
 let query = "";
 
 const count = document.querySelector("#count");
+// Shows the filtered items and updates the item count.
+function renderTours(list) {
+  if (list.length === 0) {
+    tourList.innerHTML = "<p>No items match your search.</p>";
+  } else {
+    tourList.innerHTML = list.map(cardHTML).join("");
+  }
+  count.textContent = `Showing ${list.length} of ${items.length} items`;
+}
+// Filters the items based on the categories that I have inputted above along with search
 function update() {
   const shown = items.filter(
     (item) =>
-      (activeCategory == "All" || item.category === activeCategory) &&
+      (activeCategory === "All" || item.category === activeCategory) &&
       item.title.toLowerCase().includes(query),
   );
-  document.querySelectorAll(".filter-btn").forEach(btn => { 
-btn.addEventListener("click", () => {
-  activeCategory=btn.dataset.category;
-  document.querySelectorAll(".filter")
-
-});
-});
-    
-  }
-  renderItems(shown);
-
-  function renderItems(list) {
-    tourList.innerHTML = list.map(cardHTML).join("");
-    count.textContent = `showing ${list.length} of ${items.length} items `;
-  }
-
-  function renderItems(list) {
-    if (list.length ===0){
-      tourList.innerHTML="<p>No items match your search.</p>"
-
-    } else {
-      tourList.innerHTML=list.map(cardHTML).join("");
-    }
-    count.textContent=`Showing ${list.length} of ${items.length} items`;
-   
+  renderTours(shown);
 }
+
+document.querySelectorAll(".filter-btn").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    activeCategory = btn.dataset.category;
+    document.querySelectorAll(".filter-btn").forEach((filterBtn) => {
+      const isActive = filterBtn === btn;
+      filterBtn.classList.toggle("is-active", isActive);
+      filterBtn.setAttribute("aria-pressed", isActive);
+    });
+    update();
+  });
+});
+update();
+
+const searchBox = document.querySelector("#searchBox");
+
+searchBox.addEventListener("input", (event) => {
+  query = event.target.value.toLowerCase();
+  update();
+});
