@@ -34,8 +34,15 @@ themeBtn.addEventListener("click", () => {
 // PART C: CARDS FROM THE ARRAY
 
 const items= [
-    {id: title:  "Tea", category:"Beverages", price }
-]
+    {id:1, title: "Tea", category:"Beverages", price: 1.50 }
+    {id:2, title: "Iced Vanilla Matacha", category:"Beverages", price: 3.50 }
+    {id:3, title: "Iced coffee", category:"Beverages", price: 2.50 }
+    {id:4, title: "Chocolate Lava Cake", category:"Pasteries", price: 5.00 }
+    {id:5, title: "Carrot & Pecan pound cake", category:"Pasteries", price: 7.50 }
+    {id:6, title: "Chicken ham and swiss cheese toast", category:"Main Meals", price: 12.50 }
+    {id:7, title: "Cheese and jam roll", category:"Pasteries", price: 4.50 }
+    {id:8, title: "American Cheese stuffed croissant", category:"Main Meals", price: 8.50 }
+];
 
 
 
